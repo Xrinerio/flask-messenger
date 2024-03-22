@@ -186,7 +186,6 @@ def add(data):
 
 @app.route('/allusers')
 def allusers():
-    print('!!!!!!!!!!!!!!!!!')
     if current_user.is_authenticated:
         session['room'] = ''
         users = User.query.order_by(User.username).all()
@@ -204,19 +203,22 @@ def allusers():
 @app.route('/messages/<string:id>')
 def Usermessages(id):
     if current_user.is_authenticated:
-        usersinchat = combine_users(id,current_user.id)
-        if Rooms.query.filter_by(users = usersinchat).first() != None:
-            room = Rooms.query.filter_by(users = usersinchat).first().id
-            session['room'] = room
-        else:
-            idroom = generate_unique_code(16, Rooms)
-            session['room'] = idroom
-            todb = Rooms(id = idroom, users = usersinchat)
-            db.session.add(todb)
-            db.session.commit()
+        if id in current_user.frendlist:
+            usersinchat = combine_users(id,current_user.id)
+            if Rooms.query.filter_by(users = usersinchat).first() != None:
+                room = Rooms.query.filter_by(users = usersinchat).first().id
+                session['room'] = room
+            else:
+                idroom = generate_unique_code(16, Rooms)
+                session['room'] = idroom
+                todb = Rooms(id = idroom, users = usersinchat)
+                db.session.add(todb)
+                db.session.commit()
 
-        mesdb = Messages.query.filter_by(room = session.get("room")).order_by(Messages.id.desc())
-        return render_template('room.html', mesuser = User.query.get(id), mesdb = mesdb )
+            mesdb = Messages.query.filter_by(room = session.get("room")).order_by(Messages.id.desc())
+            return render_template('room.html', mesuser = User.query.get(id), mesdb = mesdb )
+        else:
+            return redirect(url_for('index'))
     else: 
         return redirect(url_for('index'))
 
