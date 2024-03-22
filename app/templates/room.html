@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% block links %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/room.css') }}">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js" integrity="sha512-q/dWJ3kcmjBLU4Qc47E4A9kTB4m3wuTY7vkFJDTZKjTs8jhyGQnaUrxa0Ytd0ssMZhbNua9hE+E7Qv1j+DyZwA==" crossorigin="anonymous"></script>
+{% endblock %}
+
+{% block nowmessage %}
+link-secondary
+{% endblock %}
+
+{% block body %}
+
+<div class="content">
+    <div class="message-box">
+        <a href="/profile/{{ mesuser.id }}">
+            <div class="user">
+                <div class="obj">
+                    <img class="mesimg" src="{{ url_for('static', filename=mesuser.img)}}">
+                </div>
+                <div class="obj">
+                    <h2 id="username">{{ mesuser.username }}</h2>
+                </div>
+            </div>
+        </a>
+        <ul id="messages" class="messages">
+            {% for el in mesdb %}
+                {% if el.username == current_user.username %}
+                    <div class="mymes"><li class="hostmsg">{{ el.msg }}</li></div>
+                {% else %}
+                    <div class="nmymes"><li class="newmsg">{{ el.msg }}</li></div>
+                {% endif %}
+            {% endfor %}
+        </ul>
+        <div>
+            <form id="form_send_msg" style="position: static; bottom: 0; left: 0; padding-top: 16px;"  class="inputs">
+                <input type="text" name="message_input" class="text-input" id="message_input" placeholder="you message">
+                <button type="submit" class="send" id="send_msg">SEND</button>
+            </form>
+        </div>
+      </div>
+</div>
+
+<script type="text/javascript" src="{{ url_for('static', filename='js/room.js') }}"></script>
+{% endblock %}
+
+{% block js %}
+{% endblock %}

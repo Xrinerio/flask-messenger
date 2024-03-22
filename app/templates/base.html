@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/base.css') }}">
+    {% block links %}
+    {% endblock %}
+    <title>{% block title %}{% endblock %}</title>
+</head>
+<body>
+    <header class="header">
+        <div class="ico">
+          <a href="/" class="ico">
+            <img src="{{ url_for('static', filename='img/logo.png') }}" height="60px">
+          </a>
+        </div>
+        {% if current_user.is_authenticated %}
+        <nav class="nav-links">
+          <ul class="links">
+            <li><a href="/profile" class="link-btn {% block nowprofile %}{% endblock %}">Profile</a></li>
+            <li><a href="/friends" class="link-btn {% block nowfriends %}{% endblock %}">Friends</a></li>
+            <li><a href="/allusers" class="link-btn {% block nowmessage %}{% endblock %}">Users</a></li>
+            <li><a href="/settings" class="link-btn {% block nowsettings %}{% endblock %}">Settings</a></li>
+            <li><a href="/about" class="link-btn {% block nowabout %}{% endblock %}">About</a></li>
+          </ul>
+        </nav>
+        {% endif %}
+        {% if not current_user.is_authenticated %}
+        <div class="links">
+          <a href="/login" class="btn-login">Login</a>
+          <a href="/register" class="btn-signup">Sign-up</a>
+        </div>
+        {% endif %}
+    </header>
+    {% if not body %}
+      <div class="wrapper">
+        {% block body %}
+        {% endblock %}
+      </div>
+    {% endif %}
+
+      {% block js %}
+      {% endblock %}
+</body>
+</html>

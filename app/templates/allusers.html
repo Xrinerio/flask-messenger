@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+
+{% block links %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/allusers.css') }}">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js" integrity="sha512-q/dWJ3kcmjBLU4Qc47E4A9kTB4m3wuTY7vkFJDTZKjTs8jhyGQnaUrxa0Ytd0ssMZhbNua9hE+E7Qv1j+DyZwA==" crossorigin="anonymous"></script>
+{% endblock %}
+
+{% block nowmessage %}
+link-secondary
+{% endblock %}
+
+{% block body %}
+<script>const current_user_id = '{{ current_user.id }}'</script>
+<div class="content">
+    {% for el in users %}
+        {% if el.id != current_user.id %}
+            
+                <div class="user">
+                    <div class="avatar-container">
+                        <img class="avatar" src="{{ url_for('static', filename=el.img)}}">
+                    </div>
+                    <div class="userinfo">
+                        <div class="name">
+                            <h1>
+                            {% if el.name %}
+                                {{ el.name }}
+                            {% else %}
+                                {{ el.username }}
+                            {% endif %}
+                            </h1>
+                        </div>
+                        <div class="status">
+                            <h3>
+                                {% if el.status %}
+                                    {{ el.status }}
+                                {% else %}
+                                    I have not status!!! :((
+                                {% endif %}
+                            </h3>
+                        </div>
+                    </div>
+                    <div class="btn-block">
+                        <a href="/profile/{{ el.id }}" id="_"><div class="btn openprofile">Open Profile</div></a>
+                        {% if el.id|string in friends %}
+                            <a href="/messages/{{ el.id }}" id="_"><div class="btn sendmsg">Send Message</div></a>
+                        {% elif el.id|string in taketreq %}
+                            <div class="btn reqtaket" id="acc_{{ el.id }}">Request Taket</div>
+                        {% elif el.id|string in sendedreq %}
+                            <div class="btn reqsended" id="undo_{{ el.id }}">Request Sended</div>
+                        {% else %}
+                            <div class="btn addfriend" id="add_{{ el.id }}">Add Friend</div>
+                        {% endif %}
+                        
+                    </div>
+                </div>
+        {% endif %}
+    {% endfor %}
+</div>
+
+<script type="text/javascript" src="{{ url_for('static', filename='js/allusers.js') }}"></script>
+{% endblock %}

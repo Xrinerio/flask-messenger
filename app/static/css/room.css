@@ -1,0 +1,129 @@
+.content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .message-box {
+    margin-top: 40px;
+    background-color: whitesmoke;
+    height: 80vh;
+    display: flex;
+    flex-direction: column;
+    width: 80vw;
+    align-items: stretch;
+  }
+  
+  ul::-webkit-scrollbar{
+    display: none;
+  }
+
+  .messages {
+    margin: 0;
+    padding: 0px;
+    overflow-y: scroll;
+    flex: 1;
+    display: flex;
+    flex-direction: column-reverse;
+    width: 100%;
+  }
+
+.messages li{
+  font-size: 30px;
+}
+  
+  .text {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+  
+  .muted {
+    font-size: 10px;
+    color: darkgray;
+  }
+
+  li{
+    list-style-type: none;
+    font-size: 24px;
+  }
+
+  .hostmsg{
+    right: 0;
+    
+  }
+  
+  .newmsg{
+    background-color: ;
+  }
+
+  .mymes{
+    padding: 1px 18px 3px 18px;
+    width: fit-content;
+    height: fit-content;
+    align-self: flex-end;
+    border-radius: 24px;
+    margin-top: 10px;
+    background-color: rgb(154, 223, 222);
+  }
+
+  .nmymes{
+    padding: 1px 18px 3px 18px;
+    width: fit-content;
+    height: fit-content;
+    align-self: flex;
+    border-radius: 24px;
+    margin-top: 10px;
+    background-color: rgb(185, 220, 233);
+  }
+
+  .mesimg{
+    width: 120px;
+    border-radius: 50%; 
+    border: 0;
+  }
+
+  .user{
+    display: flex;
+    background-color: rgb(213, 213, 213);
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+  }
+
+  .obj{
+    margin: 5px;
+    padding: 8px;
+    display: flex;
+    align-items: center;
+  }
+
+  .inputs{
+    display: flex;
+    flex-direction: row;
+  }
+
+h2{
+  font-size: 42px;
+  color: black;
+}
+
+.text-input{
+  border-radius: 5px;
+  border: 1px solid rgb(98, 98, 98);
+  width: 80%;
+  min-height: 30px;
+  font-size: 24px;
+}
+
+.send{
+  margin-left: 5px;
+  font-size: 14px;
+  color: white;
+  width: 20%;
+  border: 0;
+  background-color: green;
+  border-radius: 10px;
+}

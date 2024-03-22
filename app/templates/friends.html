@@ -1,0 +1,144 @@
+{% extends 'base.html' %}
+
+{% block links %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/friends.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/allusers.css') }}">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js" integrity="sha512-q/dWJ3kcmjBLU4Qc47E4A9kTB4m3wuTY7vkFJDTZKjTs8jhyGQnaUrxa0Ytd0ssMZhbNua9hE+E7Qv1j+DyZwA==" crossorigin="anonymous"></script>
+{% endblock %}
+
+{% block nowfriends  %}
+link-secondary
+{% endblock %}
+
+{% block body %}
+<div class="content">
+    {% if current_user.sendedreq %}
+        <div class="teg"><h1>My Requests</h1></div>
+
+        {% for el in users_info %}
+        {% if el.id|string in cu_user.sendedreq %}
+            
+        <div class="user">
+            <div class="avatar-container">
+                <img class="avatar" src="{{ url_for('static', filename=el.img)}}">
+            </div>
+            <div class="userinfo">
+                <div class="name">
+                    <h1>
+                    {% if el.name %}
+                        {{ el.name }}
+                    {% else %}
+                        {{ el.username }}
+                    {% endif %}
+                    </h1>
+                </div>
+                <div class="status">
+                    <h3>
+                        {% if el.status %}
+                            {{ el.status }}
+                        {% else %}
+                            I have not status!!! :((
+                        {% endif %}
+                    </h3>
+                </div>
+            </div>
+            <div class="btn-block">
+                <a href="/profile/{{ el.id }}" id="_"><div class="btn openprofile">Open Profile</div></a>
+                <div class="btn reqsended" id="undo_{{ el.id }}">Request Sended</div>
+                
+            </div>
+        </div>
+
+        {% endif %}
+    {% endfor %}
+    {% endif %}
+
+    {% if current_user.taketreq %}
+        <div class="teg"><h1>New Friends Requests</h1></div>
+
+        {% for el in users_info %}
+        {% if el.id|string in cu_user.taketreq %}
+            
+        <div class="user">
+            <div class="avatar-container">
+                <img class="avatar" src="{{ url_for('static', filename=el.img)}}">
+            </div>
+            <div class="userinfo">
+                <div class="name">
+                    <h1>
+                    {% if el.name %}
+                        {{ el.name }}
+                    {% else %}
+                        {{ el.username }}
+                    {% endif %}
+                    </h1>
+                </div>
+                <div class="status">
+                    <h3>
+                        {% if el.status %}
+                            {{ el.status }}
+                        {% else %}
+                            I have not status!!! :((
+                        {% endif %}
+                    </h3>
+                </div>
+            </div>
+            <div class="btn-block">
+                <a href="/profile/{{ el.id }}" id="_"><div class="btn openprofile">Open Profile</div></a>
+                <div class="btn reqtaket" id="acc_{{ el.id }}">Request Taket</div>
+                
+            </div>
+        </div>
+
+        {% endif %}
+    {% endfor %}
+
+
+    {% endif %}
+
+    <div class="teg"><h1>Your Friends</h1></div>
+    {% set k = False %}
+    {% for el in users_info %}
+        {% if el.id|string in cu_user.frendlist and el.id != current_user.id %}
+        {% set k = True %}
+            
+        <div class="user">
+            <div class="avatar-container">
+                <img class="avatar" src="{{ url_for('static', filename=el.img)}}">
+            </div>
+            <div class="userinfo">
+                <div class="name">
+                    <h1>
+                    {% if el.name %}
+                        {{ el.name }}
+                    {% else %}
+                        {{ el.username }}
+                    {% endif %}
+                    </h1>
+                </div>
+                <div class="status">
+                    <h3>
+                        {% if el.status %}
+                            {{ el.status }}
+                        {% else %}
+                            I have not status!!! :((
+                        {% endif %}
+                    </h3>
+                </div>
+            </div>
+            <div class="btn-block">
+                <a href="/profile/{{ el.id }}" id="_"><div class="btn openprofile">Open Profile</div></a>
+                <a href="/messages/{{ el.id }}" id="_"><div class="btn sendmsg">Send Message</div></a>
+                <div class="btn delfriend" id="del_{{ el.id }}">Delete Friend</div>
+                
+            </div>
+        </div>
+
+        {% endif %}
+    {% endfor %}
+    {% if not k %}
+        <h1 class="mid">You Dont Have Friends :(</h1>
+    {% endif %}
+</div>
+<script type="text/javascript" src="{{ url_for('static', filename='js/friends.js') }}"></script>
+{% endblock %}

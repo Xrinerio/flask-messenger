@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Register</title> 
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/logreg.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"/>
+    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.1.0/uicons-solid-rounded/css/uicons-solid-rounded.css'>
+  </head>
+  <body>
+    <div class="container">
+      <div class="wrapper">
+        <div class="title"><span>Register</span></div>
+        <form method="post">
+          <div class="row">
+            <input type="text" placeholder="Name" name="name" required>
+          </div>
+          <div class="row">
+            <input type="text" placeholder="Login" name="username" required>
+          </div>
+          <div class="row">
+            <input type="email" placeholder="Email" name="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required>
+          </div>
+          <div class="row">
+            <input type="password" placeholder="Password" name="pass" required>
+          </div>
+          <div class="row-btn row button">
+            <input type="submit" value="Continue">
+          </div>
+        </form>
+      </div>
+    </div>
+
+  </body>
+</html>

@@ -1,0 +1,216 @@
+.content{
+    padding: 20px 60px 20px 60px;
+    width: 100%;
+    height: 100%;
+}
+
+.avatar{
+    width: 100%; 
+    height: 100%;
+}
+
+.avatar-container{
+    position: relative; 
+    width: 100px; 
+    height: 100px; 
+    border-radius: 50%; 
+    overflow: hidden; 
+}
+
+.info{
+    margin-bottom: 30px;
+    font-family: 'Karla';
+}
+
+.userinfo{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.textinfo{
+    margin-left: 30px;
+    margin-top: 15px;
+    display: flex;
+    flex-wrap: wrap;
+    height: fit-content;
+}
+
+.file-input::file-selector-button{
+    margin-right: 6px;
+    border: none;
+    background: #606060;
+    padding: 10px 20px;
+    border-radius: 10px;
+    color: white;
+    cursor: pointer;
+    transition: .2s ease-in-out;
+}
+
+.form{
+    font-family: 'Karla';
+    display: flex;
+    flex-direction: column;
+}
+
+
+.file-input::file-selector-button:hover{
+    background: #454545;
+}
+
+.infobj{
+    font-size: 110%;
+    margin: 10px;
+    width: fit-content;
+    max-width: 600px;
+}
+
+.infobj h4{
+    margin-bottom: 6px;
+    margin-top: 0px;
+}
+
+.text-field {
+  margin-bottom: 1rem;
+}
+
+.text-field__input {
+  width: 30%;
+  height: calc(1.25rem + 2px);
+  padding: 0.375rem 0.75rem;
+  color: #212529;
+  background-color: #fff;
+  border: 1px solid #acacac;
+  border-radius: 0.25rem;
+}
+
+form .btn-block{
+    display: flex;
+    flex-direction: column;
+    width: fit-content;
+}
+
+form .btn{
+    font-family: 'Karla';
+    font-size: 98%;
+    font-weight: 400;
+    cursor: pointer;
+    border: none;
+    align-items: center;
+    align-content: center;
+    text-align: center;
+    margin-bottom: 4px;
+    padding: 6px;
+    border-radius: 10px;
+}
+
+.btn-suc{
+    background-color: rgb(36, 136, 36);
+    color: white;
+}
+
+.btn-logout{
+    background-color: #606060;
+    color: white;
+}
+
+.btn-delete{
+    background-color: rgb(151, 18, 18);
+    color: white;
+}
+
+
+h5 {
+    text-decoration: none;
+    color: black;
+}
+
+.userinfo{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    text-align: center;
+}
+
+.name{
+    width: fit-content;
+    border-bottom: 1px solid black;
+    border-top: 1px solid black;
+}
+
+.info .btn-block{
+    width: 10%;
+    display: flex;
+    flex-direction: column;
+    width: fit-content;
+    align-content: center;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    
+}
+
+
+.reqsended{
+    background-color: rgb(165, 136, 89);
+    cursor: pointer;
+    transition: 0.5s;
+}
+
+.sendmsg{
+    background-color: rgb(140, 128, 67);
+    cursor: pointer;
+    transition: 0.5s;
+}
+
+.sendmsg:hover{
+    background-color: rgb(112, 100, 43);
+}
+
+.addfriend{
+    background-color: rgb(75, 113, 74);
+    cursor: pointer;
+    transition: 0.5s;
+}
+
+.addfriend:hover{
+    background-color: rgb(50, 99, 48);
+}
+
+.delfriend{
+    background-color: rgb(146, 78, 78);
+    cursor: pointer;
+    transition: 0.5s;
+}
+
+.delfriend:hover{
+    background-color: rgb(111, 60, 60);
+}
+
+.reqtaket{
+    background-color: rgb(82, 130, 125);
+    cursor: pointer;
+    transition: 0.5s;
+}
+/* rgb(165, 89, 89) */
+
+.info .btn{
+    display: flex;
+    justify-content: center;
+    width: 120px;
+    height: 40px;
+    font-family: 'Karla';
+    font-size: 108%;
+    font-weight: 400;
+    cursor: pointer;
+    border: none;
+    align-items: center;
+    align-content: center;
+    text-align: center;
+    margin-bottom: 4px;
+    padding: 6px;
+    border-radius: 10px;
+    color: white;
+}

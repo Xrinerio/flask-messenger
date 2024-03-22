@@ -1,0 +1,19 @@
+.teg{
+    width: 100%;
+    text-align: center;
+    border-bottom: 1px solid black;
+    padding: 10px;
+    padding-bottom: 2px;
+    margin-bottom: 10px;
+}
+
+.user{
+    border-bottom: 0px;
+}
+
+.mid{
+    font-size: 130%;
+    height: fit-content;
+    text-align: center;
+    margin-bottom: 100px;
+}

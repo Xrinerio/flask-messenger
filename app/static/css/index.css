@@ -1,0 +1,62 @@
+.chill{
+    animation: Tverk 1s linear infinite;
+    position: absolute; 
+    bottom: 0;
+    width: 500px;
+    left: 40%;
+}
+
+body{
+    background-color: blueviolet;
+}
+
+@keyframes Tverk {
+    0%,100%{
+        width: 600px;
+        bottom: 200px;
+    }
+    50%{
+        width: 300px;
+        bottom: 0;
+    }
+}
+
+.textchill{
+    animation: BimBim 1s linear infinite;
+    position: absolute;
+    font-size: 30px;
+    margin-top: 100px;
+}
+
+.mid{
+    text-align: center;
+    font-size: 100px;
+    color: white;
+}
+
+@keyframes BimBim {
+    0%,100%{
+        width: 300px;
+        rotate: 63deg;
+        bottom: 200px;
+        color: red;
+    }
+    25%{
+        width: 200px;
+        rotate: 123deg;
+        bottom: 400px;
+        color: orange;
+    }
+    50%{
+        width: 350px;
+        rotate: 269deg;
+        right: 100px;
+        color: yellow;
+    }
+    75%{
+        width: 100px;
+        rotate: 119deg;
+        right: 230px;
+        color: greenyellow;
+    }
+}

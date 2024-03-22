@@ -1,0 +1,88 @@
+{% extends 'base.html' %}
+
+{% block links %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/profile.css') }}">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js" integrity="sha512-q/dWJ3kcmjBLU4Qc47E4A9kTB4m3wuTY7vkFJDTZKjTs8jhyGQnaUrxa0Ytd0ssMZhbNua9hE+E7Qv1j+DyZwA==" crossorigin="anonymous"></script>
+{% endblock %}
+
+{% block nowprofile %}
+link-secondary
+{% endblock %}
+
+{% block body %}
+<div class="content">
+    {% if user %}
+    <div class="info">
+        <h1>Profile</h1>
+        <div class="userinfo" {% if user.id == current_user.id %} style="justify-content: left;" {% endif %}>
+            <div class="avatar-container">
+                <img class="avatar" src="{{ url_for('static', filename=user.img)}}">
+            </div>
+            <div class="textinfo">
+                <div class="infobj">
+                    <h4>Login</h4>
+                    {{ user.username }}
+                </div>
+                <div class="infobj">
+                    <h4>Email</h4>
+                    {{ user.usermail }}
+                </div>
+                {% if user.name %}
+                    <div class="infobj">
+                        <h4>Name</h4>
+                        {{ user.name }}
+                    </div>
+                {% endif %}
+                {% if user.status %}
+                    <div class="infobj">
+                        <h4>Status</h4>
+                        {{ user.status }}
+                    </div>
+                {% endif %}
+            </div>
+            {% if current_user.is_authenticated and user.id != current_user.id%}
+                <div class="btn-block">
+                    {% if user.id|string in i.frendlist %}
+                        <a href="/messages/{{ user.id }}" id="_"><div class="btn sendmsg">Send Message</div></a>
+                    {% elif user.id|string in i.taketreq %}
+                        <div class="btn reqtaket" id="acc_{{ user.id }}">Request Taket</div>
+                    {% elif user.id|string in i.sendedreq %}
+                        <div class="btn reqsended" id="undo_{{ user.id }}">Request Sended</div>
+                    {% else %}
+                        <div class="btn addfriend" id="add_{{ user.id }}">Add Friend</div>
+                    {% endif %}
+                </div>
+            {% endif %}
+        </div>
+    </div>
+    {% if current_user.id == user.id %}
+    <form class="form" method="post" enctype="multipart/form-data">
+        <div class="text-field">
+            <input type="file" accept="image/*" class="file-input" name="img" title="Upload Avatar">
+        </div>
+        <h3 class="text-field">Edit Information</h3>
+        <div class="text-field">
+            <input class="text-field__input" type="text" placeholder="New Email" name="mail">
+        </div>
+        <div class="text-field">
+            <input class="text-field__input" type="text" placeholder="New Name" name="name">
+        </div>
+        <div class="text-field">
+            <input class="text-field__input" type="text" placeholder="New Status" name="statuss">
+        </div>
+        <div class="text-field">
+            <input class="text-field__input" type="text" placeholder="New Password" name="pass">
+        </div>
+        <div class="btn-block">
+            <input class="btn btn-suc" type="submit" value="Edit">
+            <a href="/logout" class="btn btn-logout">Logout</a>
+            <a href="{{ user.id }}/dell" class="btn btn-delete">Delete Account</a>
+        </div>
+    {% endif %}
+    </form>
+    {% else %}
+    <h1>User not found!</h1>
+    {% endif %}
+</div>
+<script type="text/javascript" src="{{ url_for('static', filename='js/allusers.js') }}"></script>
+{% endblock %}

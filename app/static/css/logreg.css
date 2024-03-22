@@ -1,0 +1,115 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Karla',sans-serif;
+}
+
+
+.container{
+  max-width: 440px;
+  padding: 0 20px;
+  margin: 16% auto;
+}
+
+.wrapper{
+  width: 100%;
+  background: #e9e8ea;
+  border-radius: 8px;
+  border-top-left-radius: 0;
+  border-bottom-right-radius: 0;
+  box-shadow: 0px 4px 10px 1px rgba(0,0,0,0.1);
+}
+
+.title{
+  height: 90px;
+  background: #535c6d;
+  border-radius: 0px 8px 0px 0px;
+  color: #fff;
+  font-size: 30px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+form{
+  padding: 25px 25px 25px 25px;
+}
+
+.row{
+  height: 45px;
+  margin-bottom: 15px;
+  position: relative;
+}
+
+.row-btn{
+  margin-bottom: 0px;
+}
+
+.row input{
+  height: 100%;
+  width: 100%;
+  outline: none;
+  padding-left: 10px;
+  border-radius: 5px;
+  border: 1px solid rgb(177, 177, 177);
+  font-size: 16px;
+  transition: all 0.3s ease;
+}
+
+.row input:focus{
+  border-color: #979797;
+  box-shadow: inset 0px 0px 1px 1px #888888;
+}
+
+.row input::placeholder{
+  color: rgba(155, 155, 155, 0.755);
+}
+
+.pass{
+  margin-top: 12px;
+  text-align: center;
+}
+
+.pass a{
+  color: #373A36;
+  font-size: 17px;
+  font-style: italic;
+  text-decoration: none;
+}
+.pass a:hover{
+  text-decoration: underline;
+}
+.button input{
+  color: #fff;
+  font-size: 20px;
+  font-weight: 500;
+  padding-left: 0px;
+  background: #535c6d;
+  border: 1px solid #464e5c;
+  cursor: pointer;
+}
+.button input:hover{
+  background: #434b58;
+}
+.signup-link{
+  text-align: center;
+  margin-top: 6px;
+  font-size: 17px;
+}
+.signup-link a{
+  font-style: italic;
+  color: #373A36;
+  text-decoration: none;
+}
+.signup-link a:hover{
+  text-decoration: underline;
+}
+
+.error{
+  padding-bottom: 12px;
+  text-align: center;
+  font-size: 110%;
+  color: #c91717;
+}
